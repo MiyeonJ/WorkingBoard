@@ -18,14 +18,7 @@ module.exports = function(passport) {
         done(null, user.id);
     });
     
-	// code for login (use('local-login', new LocalStategy))
-	// code for signup (use('local-signup', new LocalStategy))
-	// code for facebook (use('facebook', new FacebookStrategy))
-	// code for twitter (use('twitter', new TwitterStrategy))
-
-	// =========================================================================
-    // GOOGLE ==================================================================
-    // =========================================================================
+	
     passport.use(new GoogleStrategy({
 
         clientID        : configAuth.googleAuth.clientID,
