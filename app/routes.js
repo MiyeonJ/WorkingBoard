@@ -51,6 +51,8 @@ module.exports = function(app, passport) {
 
       function(req, res) { 
         req.session.access_token = req.user.accessToken;
+        req.session.email = req.user._json.email;
+
         res.redirect('/gcal');
       });
 
@@ -59,13 +61,13 @@ module.exports = function(app, passport) {
 
       if(!req.session.access_token) return res.redirect('/auth/google');
 
-
       //Create an instance from accessToken
       var accessToken = req.session.access_token;
+      var id = req.session.email;
 
-      gcal(accessToken).calendarList.list(function(err, data) {
+      gcal(accessToken).events.list(id, function(err, calendarList) {
         if(err) return res.send(500,err);
-          return res.send(data);
+          return res.send(calendarList);
       });
     });
 
