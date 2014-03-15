@@ -10,7 +10,7 @@ var flash 	 = require('connect-flash');
 
 
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./configs/passport')(passport); // pass passport for configuration
 
 app.configure(function() {
 
