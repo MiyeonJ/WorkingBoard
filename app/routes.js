@@ -1,6 +1,9 @@
 var config = require('./config');
 var gcal = require('./GoogleCalendar');
 
+var ejs = require('ejs');
+var fs = require('fs');
+
 module.exports = function(app, passport) {
 
 	// route for home page
@@ -66,10 +69,13 @@ module.exports = function(app, passport) {
       var id = req.session.email;
 
       gcal(accessToken).events.list(id, function(err, calendarList) {
+
         if(err) return res.send(500,err);
-          return res.send(calendarList);
+
+          res.render('test.ejs', { items : calendarList.items } );
+        });
+
       });
-    });
 
   };
 
