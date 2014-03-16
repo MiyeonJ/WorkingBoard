@@ -72,6 +72,9 @@ module.exports = function(app, passport) {
 
         if(err) return res.send(500,err);
 
+          // items 에 뭐가 있을까
+          console.log(calendarList.items);
+
           res.render('test.ejs', { items : calendarList.items } );
         });
 

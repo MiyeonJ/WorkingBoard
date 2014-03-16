@@ -38,15 +38,19 @@
 
     <% for(var i = 0; i < items.length; ++i) { %>
 
-      <% if( i % 4 == 0) { %>
-        <div class="row">
+      <% if( i % 4 == 0 && i==0) { %>
+        
       <% } %>
-   
+      <div class="row">
       <div class="col-md-3 portfolio-item">
-          <div class="img-responsive"> <%= items[i].summary %> </div>
+          <div class="img-responsive">
+            일정<%= i+1%> </br>
+            일정이름 :  <%= items[i].summary %> </br> 
+            시작일 :  <%= items[i].start.date %> </br>
+            종료일 :  <%= items[i].end.date %> </div>
       </div>
       
-      <% if( i % 4 == 0) { %>
+      <% if( i % 4 == 0 && i==0) { %>
         </div> 
       <% } %>
 
