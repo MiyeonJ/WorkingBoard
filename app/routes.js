@@ -11,7 +11,9 @@ module.exports = function(app, passport) {
 		res.render('index.ejs'); // load the index.ejs file
 	});
 
-
+  app.get('/main', function(req, res) {
+    res.render('main.ejs'); // load the index.ejs file
+  });
 
 	// route for login form
 	// route for processing the login form
@@ -29,14 +31,11 @@ module.exports = function(app, passport) {
 
   });
 
-    // route for logging out
-    app.get('/logout', function(req, res) {
-    	req.logout();
-    	res.redirect('/');
-    });
-
-	// facebook routes
-	// twitter routes
+  // route for logging out
+  app.get('/logout', function(req, res) {
+   	req.logout();
+   	res.redirect('/');
+  });
 
 	// =====================================
 	// GOOGLE ROUTES =======================
@@ -45,40 +44,39 @@ module.exports = function(app, passport) {
 	// profile gets us their basic information including their name
 	// email gets their emails
 	app.get('/auth/google', 
-    passport.authenticate('google', { session: true }));
+    passport.authenticate('google', { session: true })
+  );
 
 
-    // the callback after google has authenticated the user
-    app.get('/auth/google/callback',
-      passport.authenticate('google', { session: true, failureRedirect: '/' }),
+  // the callback after google has authenticated the user
+  app.get('/auth/google/callback',
+    passport.authenticate('google', { session: true, failureRedirect: '/' }),
 
-      function(req, res) { 
-        req.session.access_token = req.user.accessToken;
-        req.session.email = req.user._json.email;
+    function(req, res) { 
+      req.session.access_token = req.user.accessToken;
+      req.session.email = req.user._json.email;
 
-        res.redirect('/gcal');
-      });
+      res.redirect('/gcal');
+  });
 
 
-    app.all('/gcal', function(req, res){
+  app.all('/gcal', function(req, res){
 
-      if(!req.session.access_token) return res.redirect('/auth/google');
+    if(!req.session.access_token) return res.redirect('/auth/google');
 
-      //Create an instance from accessToken
-      var accessToken = req.session.access_token;
-      var id = req.session.email;
+    //Create an instance from accessToken
+    var accessToken = req.session.access_token;
+    var id = req.session.email;
 
-      gcal(accessToken).events.list(id, function(err, calendarList) {
+    gcal(accessToken).events.list(id, function(err, calendarList) {
 
-        if(err) return res.send(500,err);
+      if(err) return res.send(500,err);
+        res.render('main.ejs', { items : calendarList.items } );
+    });
 
-          // items 에 뭐가 있을까 :: console.log(calendarList.items);
-          res.render('test.ejs', { items : calendarList.items } );
-        });
+  });
 
-      });
-
-  };
+};
 
 
 
