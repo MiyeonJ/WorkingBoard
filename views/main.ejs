@@ -22,7 +22,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav nav-tabs nav-justified">
+<<<<<<< HEAD
       <li><a id="calendar" href="#">Calendar</a></li>
+=======
+      <li><a href="#" id="calendar-tab">Calendar</a></li>
+>>>>>>> 669eacd664c858c182153415e4e580782b46df10
       <li><a href="#">Plan</a></li>
       <li><a href="#">Board</a></li>
       <li><a href="#">Storage</a></li>
@@ -34,8 +38,14 @@
 
   </nav>
 
+<<<<<<< HEAD
   <div id="contents"> 
     
+=======
+  <div id="container">
+    
+
+>>>>>>> 669eacd664c858c182153415e4e580782b46df10
   </div>
   
 <!-- /.container  -->
@@ -45,6 +55,7 @@
 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+<<<<<<< HEAD
 <script> 
 $(document).ready(function() {
   $("#calendar").click(function() {
@@ -60,6 +71,16 @@ $(document).ready(function() {
    });   
 });
 
+=======
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#calendar-tab").click(function(event) {
+    $("#container").load("/gcal", function(data){
+      console.log(data);
+    });
+  });
+});  
+>>>>>>> 669eacd664c858c182153415e4e580782b46df10
 
 </script>
 
