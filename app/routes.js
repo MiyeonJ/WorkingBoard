@@ -11,7 +11,6 @@ module.exports = function(app, passport) {
 		res.render('index.ejs'); // load the index.ejs file
 	});
 
-<<<<<<< HEAD
 
   app.get('/main', function(req, res) {
 
@@ -20,10 +19,9 @@ module.exports = function(app, passport) {
     res.render('main.ejs'); // load the index.ejs file
 
 
-=======
+
   app.get('/main', function(req, res) {
     res.render('main.ejs'); // load the index.ejs file
->>>>>>> 669eacd664c858c182153415e4e580782b46df10
   });
 
 	// route for login form
@@ -94,9 +92,9 @@ module.exports = function(app, passport) {
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
-		return next();
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next();
 
   console.log("logged in");
 
