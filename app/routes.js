@@ -88,7 +88,6 @@ module.exports = function(app, passport) {
 };
 
 
-
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
@@ -99,5 +98,5 @@ function isLoggedIn(req, res, next) {
   console.log("logged in");
 
 
-}
+};
 
