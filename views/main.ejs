@@ -22,7 +22,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">Calendar</a></li>
+      <li><a id="calendar" href="#">Calendar</a></li>
       <li><a href="#">Plan</a></li>
       <li><a href="#">Board</a></li>
       <li><a href="#">Storage</a></li>
@@ -34,6 +34,9 @@
 
   </nav>
 
+  <div id="contents"> 
+    
+  </div>
   
 <!-- /.container  -->
 
@@ -41,6 +44,24 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script> 
+$(document).ready(function() {
+  $("#calendar").click(function() {
+    $.ajax({
+    url : "/gcal",
+    dataType : "jsonp",
+    jsonp : "callback",
+    success : function(d){
+        // d.key;
+    }
+    });
+    
+   });   
+});
+
+
+</script>
 
 </body>
 

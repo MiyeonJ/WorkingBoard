@@ -12,6 +12,14 @@ module.exports = function(app, passport) {
 	});
 
 
+  app.get('/main', function(req, res) {
+
+    passport.authenticate('google', { session: true });
+
+    res.render('main.ejs'); // load the index.ejs file
+
+
+  });
 
 	// route for login form
 	// route for processing the login form
